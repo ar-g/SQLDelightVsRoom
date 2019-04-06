@@ -1,0 +1,20 @@
+CREATE TABLE messages(
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  payload TEXT NOT NULL,
+  creation_time INTEGER NOT NULL,
+  media_id INTEGER NOT NULL
+);
+
+saveMessage:
+INSERT INTO messages(payload, creation_time, media_id)
+VALUES (?, ?, ?);
+
+countMessages:
+SELECT count(*) FROM messages;
+
+messageWithMedia:
+SELECT messages.id AS messageId, payload AS msg, messages.creation_time AS creationTime, medias.url
+FROM messages
+INNER JOIN medias ON messages.media_id == medias.id
+ORDER BY payload ASC
+LIMIT :limit OFFSET :offset;

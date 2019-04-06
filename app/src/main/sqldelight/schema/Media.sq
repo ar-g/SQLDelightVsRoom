@@ -1,0 +1,8 @@
+CREATE TABLE medias(
+  id INTEGER NOT NULL PRIMARY KEY,
+  url TEXT NOT NULL
+);
+
+saveMedia:
+INSERT INTO medias(id, url)
+VALUES (?, ?);
