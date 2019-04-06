@@ -13,7 +13,8 @@ countMessages:
 SELECT count(*) FROM messages;
 
 messageWithMedia:
-SELECT *
+SELECT messages.id AS messageId, payload AS msg, medias.url
 FROM messages
+INNER JOIN medias ON messages.media_id == medias.id
 ORDER BY payload ASC
 LIMIT :limit OFFSET :offset;

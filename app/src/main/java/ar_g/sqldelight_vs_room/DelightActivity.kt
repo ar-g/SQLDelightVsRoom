@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import androidx.recyclerview.widget.LinearLayoutManager
+import ar_g.sqldelight_vs_room.ui.DelightJoinMessagesAdapter
 import ar_g.sqldelight_vs_room.ui.DelightMessagesAdapter
 import com.squareup.sqldelight.android.AndroidSqliteDriver
 import com.squareup.sqldelight.android.paging.QueryDataSourceFactory
@@ -18,7 +19,7 @@ class DelightActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delight)
-        val adapter = DelightMessagesAdapter()
+        val adapter = DelightJoinMessagesAdapter()
         rvMessages.layoutManager = LinearLayoutManager(this)
         rvMessages.adapter = adapter
 
@@ -44,8 +45,11 @@ class DelightActivity : AppCompatActivity() {
             .setEnablePlaceholders(false)
             .setPrefetchDistance(20)
             .build()
-        val rxPagedListBuilder = RxPagedListBuilder(dataSource, config)
-        disposable = rxPagedListBuilder.buildObservable().subscribe(adapter::submitList)
+        val rxPagedListBuilder = RxPagedListBuilder(
+            dataSource, config)
+        disposable = rxPagedListBuilder
+            .buildObservable()
+            .subscribe(adapter::submitList)
     }
 
     override fun onDestroy() {

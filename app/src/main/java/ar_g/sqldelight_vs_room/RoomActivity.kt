@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ar_g.sqldelight_vs_room.room.Media
 import ar_g.sqldelight_vs_room.room.Message
 import ar_g.sqldelight_vs_room.room.UaMobileRoomDb
-import ar_g.sqldelight_vs_room.ui.RoomJoinMessagesAdapter
 import ar_g.sqldelight_vs_room.ui.RoomMessagesAdapter
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_delight.*
