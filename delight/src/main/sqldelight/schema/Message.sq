@@ -1,0 +1,21 @@
+CREATE TABLE messages(
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  payload TEXT NOT NULL,
+  creation_time INTEGER NOT NULL,
+  media_id INTEGER NOT NULL
+);
+
+saveMessage:
+INSERT INTO messages(payload, creation_time, media_id)
+VALUES (?, ?, ?);
+
+messages:
+SELECT *
+FROM messages
+ORDER BY payload ASC;
+
+messageWithMedia:
+SELECT messages.id AS messageId, payload AS msg, medias.url
+FROM messages
+INNER JOIN medias ON messages.media_id == medias.id
+ORDER BY payload ASC;

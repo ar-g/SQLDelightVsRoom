@@ -3,15 +3,7 @@ package ar_g.sqldelight_vs_room
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.paging.*
-import androidx.recyclerview.widget.LinearLayoutManager
-import ar_g.sqldelight_vs_room.room.Media
-import ar_g.sqldelight_vs_room.room.Message
-import ar_g.sqldelight_vs_room.room.UaMobileRoomDb
-import ar_g.sqldelight_vs_room.ui.RoomMessagesAdapter
-import com.squareup.sqldelight.android.AndroidSqliteDriver
-import com.squareup.sqldelight.android.paging.QueryDataSourceFactory
-import io.reactivex.disposables.Disposable
+import e.ar_g.room.RoomActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         delight.setOnClickListener {
-            startActivity(Intent(this, DelightActivity::class.java))
+            startActivity(Intent(this, e.ar_g.delight.DelightActivity::class.java))
         }
 
         room.setOnClickListener {
